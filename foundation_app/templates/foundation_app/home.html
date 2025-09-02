@@ -1,0 +1,237 @@
+{% extends 'foundation_app/base.html' %}
+{% load static %}
+
+{% block title %}Home - Puranchand Foundation{% endblock %}
+
+{% block content %}
+<section class="font-sans text-gray-800">
+
+    <div id="hero-carousel" class="relative h-screen flex items-center justify-center text-center bg-cover bg-center transition-opacity duration-1000 ease-in-out">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="z-10 text-white p-6 md:p-10 max-w-4xl mx-auto rounded-xl shadow-2xl backdrop-blur-sm bg-opacity-30 bg-gray-900">
+            <img src="{% static 'foundation_app/images/your_logo.jpg' %}" alt="Puranchand Foundation Logo" class="mx-auto h-24 mb-8">
+
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                Building a Brighter Future, Together
+            </h1>
+            <p class="text-lg md:text-2xl mb-8 font-light">
+                Puranchand Foundation is dedicated to creating lasting positive impact through innovation, education, and community empowerment. Join us in our mission to make a difference.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <button
+                    onClick="window.location.href='{% url 'foundation_app:contact' %}'"
+                    class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transform transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-emerald-300 glowing-button"
+                >
+                    Learn More & Get Involved
+                </button>
+                <a href="{% url 'foundation_app:dashboard' %}?tab=make-donation"
+                class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transform transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
+                    Donate Now
+                </a>
+            </div>
+        </div>
+    </div>
+    {# END: Hero Section #}
+
+    {# START: Our Projects Section #}
+    <div class="container mx-auto py-16 px-4 md:px-8 bg-white rounded-xl shadow-xl my-12">
+        <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-12">Our Latest Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {% for project in projects %}
+            <div class="bg-emerald-50 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-emerald-100">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-4">{{ project.title }}</h3>
+                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                    {{ project.description|truncatechars:150 }}
+                </p>
+                {% if project.slug %}
+                <a href="{% url 'foundation_app:project_detail' slug=project.slug %}" class="text-blue-600 hover:text-blue-800 font-semibold">Learn More &rarr;</a>
+                {% endif %}
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center text-gray-600 text-xl">
+                No projects available at the moment. Please check back later!
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-12">
+            <!-- The 'View All Projects' button now links to a new URL named 'all_projects' -->
+            <a href="{% url 'foundation_app:all_projects' %}" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transform transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-emerald-300 glowing-button">
+                View All Projects
+            </a>
+        </div>
+    </div>
+    {# END: Our Projects Section #}
+
+    {# START: Our Programmes Section with Logos #}
+    <div class="container mx-auto py-16 px-4 md:px-8 bg-emerald-50 rounded-xl shadow-xl my-12">
+        <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-12">OUR PROGRAMMES</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {# Programme 1: Education #}
+            <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-100 flex flex-col items-center text-center">
+                <div class="w-16 h-16 mb-6 flex justify-center text-yellow-500">
+                    <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <path fill="none" stroke="currentColor" stroke-width="4" d="M30 15v70h40V15c0-5-4-9-9-9H39c-5 0-9 4-9 9z"/>
+                        <path fill="currentColor" d="M30 20l-10 5v60l10-5V20z"/>
+                        <path fill="currentColor" d="M70 20l10 5v60l-10-5V20z"/>
+                        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M35 30h30M35 40h30M35 50h30"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-yellow-700 mb-4 text-center">EDUCATION</h3>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Education, nutrition and holistic development of children
+                </p>
+            </div>
+
+            {# Programme 2: Healthcare #}
+            <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-100 flex flex-col items-center text-center">
+                <div class="w-16 h-16 mb-6 flex justify-center text-purple-600">
+                    <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <path fill="none" stroke="currentColor" stroke-width="4" d="M10 50h15l10-25 15 50 10-25h15l5 10"/>
+                        <circle cx="20" cy="50" r="10" fill="currentColor" opacity="0.1"/>
+                        <path fill="none" stroke="currentColor" stroke-width="4" d="M80 50a10 10 0 1 0 0 .1z"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-purple-700 mb-4 text-center">HEALTHCARE</h3>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Taking healthcare services to doorsteps of hard to reach communities
+                </p>
+            </div>
+
+            {# Programme 3: Women Empowerment #}
+            <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-100 flex flex-col items-center text-center">
+                <div class="w-16 h-16 mb-6 flex justify-center text-teal-600">
+                    <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <path fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M50 85c-15 0-20-10-20-20v-30c0-10 10-20 20-20s20 10 20 20v30c0 10-5 20-20 20z"/>
+                        <path fill="currentColor" d="M50 85v10M50 95a5 5 0 1 0 0 10 5 5 0 1 0 0-10z"/>
+                        <path fill="currentColor" d="M50 85c0-10-5-20-20-20V35c0-10 10-20 20-20s20 10 20 20v30c0 10-5 20-20 20z" opacity="0.1"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-blue-700 mb-4 text-center">WOMEN EMPOWERMENT</h3>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Empowering adolescent girls & women through community engagement
+                </p>
+            </div>
+
+            {# Programme 4: Livelihood #}
+            <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-100 flex flex-col items-center text-center">
+                <div class="w-16 h-16 mb-6 flex justify-center text-amber-600">
+                    <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <path fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" d="M30 15h40a5 5 0 0 1 5 5v60a5 5 0 0 1-5 5H30a5 5 0 0 1-5-5V20a5 5 0 0 1 5-5z"/>
+                        <path fill="currentColor" d="M30 15v70h40V15z" opacity="0.1"/>
+                        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M40 25h20M40 35h20M40 45h20M40 55h20"/>
+                        <circle cx="50" cy="70" r="5" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-amber-700 mb-4 text-center">LIVELIHOOD</h3>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Skill training and placement support for underprivileged youth
+                </p>
+            </div>
+
+            {# Programme 5: Empowering Grassroots #}
+            <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-100 flex flex-col items-center text-center">
+                <div class="w-16 h-16 mb-6 flex justify-center text-green-600">
+                    <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <path fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" d="M30 40a10 10 0 0 1 20 0l-10 10z"/>
+                        <path fill="currentColor" d="M30 40a10 10 0 0 1 20 0l-10 10z" opacity="0.1"/>
+                        <path fill="none" stroke="currentColor" stroke-width="4" d="M20 50h60M20 50l10 15h40l10-15z"/>
+                        <path fill="none" stroke="currentColor" stroke-width="4" d="M35 70h30"/>
+                        <path fill="none" stroke="currentColor" stroke-width="2" d="M50 30v10"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-green-700 mb-4 text-center">EMPOWERING GRASSROOTS</h3>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Helping community-based organizations become locally sustainable
+                </p>
+            </div>
+
+            {# Programme 6: Sports #}
+            <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-100 flex flex-col items-center text-center">
+                <div class="w-16 h-16 mb-6 flex justify-center text-green-600">
+                    <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="4" fill="none"/>
+                        <path fill="none" stroke="currentColor" stroke-width="4" d="M50 10v40h40M50 10v40h-40M50 90v-40h40M50 90v-40h-40"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-green-700 mb-4 text-center">SPORTS</h3>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Promoting physical health and teamwork through sports activities and events
+                </p>
+            </div>
+
+        </div>
+    </div>
+    {# END: Our Programmes Section #}
+
+    <div class="bg-stone-50 py-16 px-4 md:px-8">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-12">Our Impact in Numbers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+                <div class="p-6 rounded-xl shadow-lg bg-white transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-5xl font-extrabold text-teal-600">3+</p>
+                    <p class="text-lg text-gray-700">Years of experience</p>
+                </div>
+                <div class="p-6 rounded-xl shadow-lg bg-white transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-5xl font-extrabold text-teal-600">10000+</p>
+                    <p class="text-lg text-gray-700">Happy Children</p>
+                </div>
+                <div class="p-6 rounded-xl shadow-lg bg-white transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-5xl font-extrabold text-teal-600">100+</p>
+                    <p class="text-lg text-gray-700">Events</p>
+                </div>
+                <div class="p-6 rounded-xl shadow-lg bg-white transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-5xl font-extrabold text-teal-600">100+</p>
+                    <p class="text-lg text-gray-700">Funds Raised</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto py-16 px-4 md:px-8">
+        <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-12">What People Say</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div class="bg-white p-8 rounded-xl shadow-xl border border-stone-100 flex flex-col items-center text-center hover:shadow-2xl transition-shadow duration-300">
+                <img
+                    src="{% static 'foundation_app/images/238.jpg' %}"
+                    alt="Testimonial User 1"
+                    class="w-20 h-20 rounded-full mb-6 border-4 border-stone-200"
+                />
+                <p class="text-gray-700 text-lg italic mb-6">
+                    "The Puranchand Foundation's commitment to community welfare is truly commendable. Their programs in education and healthcare are making a tangible difference in the lives of our citizens, fostering a stronger, more resilient society."
+                </p>
+                <p class="font-bold text-emerald-700 text-xl">- Pradip Kumar, Member of Parliament</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-xl border border-stone-100 flex flex-col items-center text-center hover:shadow-2xl transition-shadow duration-300">
+                <img
+                    src="{% static 'foundation_app/images/239.jpg' %}"
+                    alt="Testimonial User 2"
+                    class="w-20 h-20 rounded-full mb-6 border-4 border-stone-200"
+                />
+                <p class="text-gray-700 text-lg italic mb-6">
+                    "Thanks to the Puranchand Foundation's scholarship program, I was able to pursue my dream of higher education. Their support goes beyond just funding; they provide guidance and a sense of community that has been invaluable to my journey."
+                </p>
+                <p class="font-bold text-emerald-700 text-xl">- Kiran Kumari, Birsa Agriculture University Student</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.getElementById('hero-carousel');
+        const images = [
+            "{% static 'foundation_app/images/img516.jpg' %}",
+            "{% static 'foundation_app/images/img550.jpg' %}",
+            "{% static 'foundation_app/images/img497.jpg' %}",
+            "{% static 'foundation_app/images/img448.jpg'}",
+        ];
+        let currentIndex = 0;
+
+        function changeBackground() {
+            carousel.style.backgroundImage = `url('${images[currentIndex]}')`;
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+        changeBackground();
+        setInterval(changeBackground, 5000);
+    });
+</script>
+{% endblock %}

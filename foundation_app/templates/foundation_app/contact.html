@@ -1,0 +1,154 @@
+{% extends 'foundation_app/base.html' %}
+
+{% block title %}Contact - Puranchand Foundation{% endblock %}
+
+{% block content %}
+<section class="font-sans text-gray-800 py-16 px-4 md:px-8 bg-emerald-50">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-12">Contact Us</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white p-8 rounded-xl shadow-2xl">
+            <!-- Contact Information -->
+            <div class="flex flex-col justify-center">
+                <p class="text-lg mb-6 leading-relaxed">
+                    We'd love to hear from you! Whether you have questions about our work, want to get involved, or have a partnership proposal, feel free to reach out.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-center">
+                        <svg class="w-8 h-8 text-emerald-600 mr-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.93 2.93A1 1 0 013 4v12a1 1 0 01-1 1h16a1 1 0 011-1V4a1 1 0 01-1-1h-16zm15 2H3V4h15v1zm-1 2H3v9h15V7z" clip-rule="evenodd"></path>
+                            <path fill-rule="evenodd" d="M10 9a2 2 0 100 4 2 2 0 000-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-xl text-emerald-700">Email:</p>
+                            <p class="text-gray-700 text-lg">Puranchandfoundation@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-8 h-8 text-teal-600 mr-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M14.473 17.5l-2.435-2.435a.75.75 0 01-.22-.53V10.5a.75.75 0 011.5 0v3.708l2.138 2.138a.75.75 0 01-1.06 1.06zM10 2a8 8 0 100 16 8 8 0 000-16zM9 9a1 1 0 00-1 1v4a1 1 0 001 1h2a1 1 0 001-1v-4a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-xl text-teal-700">Phone:</p>
+                            <p class="text-gray-700 text-lg">+91 9466922594</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-8 h-8 text-indigo-600 mr-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-xl text-indigo-700">Address:</p>
+                            <p class="text-gray-700 text-lg">MIG - A/42 Harmu Housing Colony, Near Patel Park Ranchi, Jharkhand - 834002</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <!-- Added id="contact-form" to the form element for JavaScript to find it -->
+            <form id="contact-form" method="post" class="p-6 bg-emerald-50 rounded-lg shadow-inner">
+                {% csrf_token %} <!-- Django requires this for POST forms -->
+                {% for field in form %}
+                    <div class="mb-6">
+                        <label for="{{ field.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <ul class="text-red-600 text-sm mt-1">
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <!-- Added id="submit-button" to the button for JavaScript -->
+                <button
+                    id="submit-button"
+                    type="submit"
+                    class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-full text-xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-emerald-300 flex items-center justify-center"
+                >
+                    Send Message
+                </button>
+
+                <!-- Added id="submission-status-message" to the div for JavaScript -->
+                <div id="submission-status-message">
+                    <!-- The JavaScript will dynamically add content here -->
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- This is the new JavaScript code to handle the form submission -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the form and the elements for the status message
+        const form = document.getElementById('contact-form');
+        const submitButton = document.getElementById('submit-button');
+        const statusMessageDiv = document.getElementById('submission-status-message');
+
+        // Listen for the form's submit event
+        form.addEventListener('submit', async function(event) {
+            // Prevent the default form submission (page refresh)
+            event.preventDefault();
+
+            // Clear any previous status messages
+            statusMessageDiv.innerHTML = '';
+
+            // Show a loading state
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Sending...';
+
+            try {
+                // Get the form data
+                const formData = new FormData(form);
+
+                // Use the Fetch API to send the form data to the server
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    // Django requires the CSRF token in the request header for AJAX POSTs
+                    headers: {
+                        'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                    }
+                });
+
+                // Check if the server responded with a 2xx success status
+                if (response.ok) {
+                    // Update the status message for success
+                    statusMessageDiv.innerHTML = `
+                        <div class="mt-6 p-4 bg-green-100 text-green-700 rounded-lg text-center text-lg shadow-md">
+                            Message sent successfully! We'll get back to you soon.
+                        </div>
+                    `;
+                    // Clear the form fields after a successful submission
+                    form.reset();
+                } else {
+                    // If the response was not okay (e.g., 400 Bad Request)
+                    const errorText = await response.text();
+                    statusMessageDiv.innerHTML = `
+                        <div class="mt-6 p-4 bg-red-100 text-red-700 rounded-lg text-center text-lg shadow-md">
+                            There was an error sending your message. Please check your input.
+                        </div>
+                    `;
+                    console.error('Submission failed:', errorText);
+                }
+            } catch (error) {
+                // Handle network errors or other issues
+                console.error('Error submitting form:', error);
+                statusMessageDiv.innerHTML = `
+                    <div class="mt-6 p-4 bg-red-100 text-red-700 rounded-lg text-center text-lg shadow-md">
+                        A network error occurred. Please try again later.
+                    </div>
+                `;
+            } finally {
+                // Reset the button back to its original state
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send Message';
+            }
+        });
+    });
+</script>
+{% endblock %}

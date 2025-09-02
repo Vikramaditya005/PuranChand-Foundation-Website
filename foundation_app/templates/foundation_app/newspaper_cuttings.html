@@ -1,0 +1,15 @@
+{% extends "foundation_app/base.html" %}
+{% block content %}
+<section class="bg-emerald-50 py-12 px-6">
+  <h2 class="text-3xl font-bold text-emerald-700 mb-8 text-center">Newspaper Cuttings</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {% for cutting in cuttings %}
+      <div class="bg-white rounded-lg shadow p-2">
+        <img src="{{ cutting.image.url }}" alt="{{ cutting.title }}" class="rounded-lg">
+      </div>
+    {% empty %}
+      <p class="text-center text-gray-600">No newspaper cuttings available yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

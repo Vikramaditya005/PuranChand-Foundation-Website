@@ -1,0 +1,98 @@
+{% extends 'foundation_app/base.html' %}
+{% load static %}
+
+{% block title %}Sign Up - Puranchand Foundation{% endblock %}
+
+{% block content %}
+<section class="font-sans text-gray-800 py-16 px-4 md:px-8 bg-emerald-50 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto max-w-md">
+        <div class="bg-white p-8 rounded-xl shadow-2xl border border-emerald-100">
+            <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-8">Create Your Account</h2>
+
+            {% if form.errors %}
+                <div class="mb-6 p-4 bg-red-100 text-red-700 rounded-lg text-center text-lg shadow-md" role="alert">
+                    <p>Please correct the following errors:</p>
+                    <ul class="list-disc list-inside text-left mt-2">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <form method="post" action="{% url 'foundation_app:signup' %}">
+                {% csrf_token %}
+
+                {# Render username field (often used for email in custom setups, but explicitly labeled username here) #}
+                <div class="mb-6">
+                    <label for="{{ form.username.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ form.username.label }}</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.username.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                {# Render email field #}
+                <div class="mb-6">
+                    <label for="{{ form.email.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ form.email.label }}</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                {# Render first_name field #}
+                <div class="mb-6">
+                    <label for="{{ form.first_name.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ form.first_name.label }}</label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.first_name.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                {# Render last_name field #}
+                <div class="mb-6">
+                    <label for="{{ form.last_name.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ form.last_name.label }}</label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.last_name.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                {# Render password fields #}
+                <div class="mb-6">
+                    <label for="{{ form.password1.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ form.password1.label }}</label>
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.password1.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-6">
+                    <label for="{{ form.password2.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ form.password2.label }}</label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.password2.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-full text-xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-emerald-300 flex items-center justify-center"
+                >
+                    Sign Up
+                </button>
+            </form>
+
+            <p class="mt-6 text-center text-gray-600">
+                Already have an account?
+                <a href="{% url 'foundation_app:login' %}" class="text-emerald-600 hover:text-emerald-800 font-semibold">Login</a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

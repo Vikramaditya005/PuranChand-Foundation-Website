@@ -1,0 +1,149 @@
+{% extends 'foundation_app/base.html' %}
+{% load static %}
+
+{% comment %}
+This block sets the page title in the browser tab.
+It will replace the `{% block title %}` in `base.html`.
+{% endcomment %}
+{% block title %}Media Centre - Puranchand Foundation{% endblock %}
+
+{% block content %}
+    <section class="text-center mb-12">
+        <h2 class="text-5xl font-extrabold text-emerald-800 mb-6">Our Media Centre</h2>
+        <p class="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
+            Welcome to the official media hub of Puranchand Foundation. Here, you'll find a comprehensive collection of our work, impact, and stories, categorized for easy access.
+        </p>
+    </section>
+
+    <!-- Electronic Media Section -->
+    <section class="bg-white rounded-xl shadow-2xl p-8 mb-12 border border-emerald-100">
+        <h3 class="text-4xl font-bold text-emerald-700 mb-8 text-center">Electronic Media</h3>
+        <p class="text-lg text-gray-700 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
+            Dive into our digital presence, including podcasts, webinars, and online articles that highlight our initiatives and expert insights.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Podcast Section -->
+            <div class="bg-emerald-50 p-6 rounded-xl shadow-md">
+                <h4 class="text-2xl font-bold text-emerald-700 mb-4 text-center">Our Podcasts</h4>
+                <p class="text-gray-700 text-center mb-6">
+                    Explore our full collection of inspiring podcasts. New episodes are added regularly.
+                </p>
+                <div class="text-center">
+                    <a href="{% url 'foundation_app:podcast_list' %}"
+                       class="inline-block bg-emerald-600 text-white px-6 py-3 rounded-full
+                              hover:bg-emerald-700 transition duration-300 shadow-md">
+                        🎧 Explore Podcasts
+                    </a>
+                </div>
+            </div>
+            <!-- Latest News Section -->
+            <div class="bg-emerald-50 rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
+                <h4 class="text-2xl font-semibold text-emerald-800 mb-3">Latest News</h4>
+                <p class="text-gray-700 text-base mb-4">Stay updated with our latest news and press releases about the foundation's work.</p>
+                <a href="{% url 'foundation_app:news_list' %}" class="inline-block bg-emerald-500 text-white px-5 py-2 rounded-full hover:bg-emerald-600 transition duration-300 shadow-md">Read More</a>
+            </div>
+            <!-- Digital Media Section -->
+            <div class="bg-emerald-50 rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
+                <h4 class="text-2xl font-semibold text-emerald-800 mb-3">Digital Media</h4>
+                <p class="text-gray-700 text-base mb-2">
+                    Explore our collection of inspiring videos from events, workshops, and campaigns.
+                </p>
+                <p class="text-gray-700 text-base mb-4">
+                    Stay connected with our work through engaging digital content on YouTube and Facebook.
+                </p>
+                <a href="{% url 'foundation_app:video_list' %}"
+                   class="inline-block bg-emerald-500 text-white px-5 py-2 rounded-full hover:bg-emerald-600 transition duration-300 shadow-md">
+                    Explore Videos
+                </a>
+            </div>
+        </div>
+    </section>
+
+<section class="bg-white rounded-xl shadow-2xl p-8 mb-12 border border-emerald-100">
+  <h3 class="text-4xl font-bold text-emerald-700 mb-8 text-center">Print Media</h3>
+  <p class="text-lg text-gray-700 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
+    Explore our press coverage, event photos, and reviews to get a glimpse of our work in action.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Newspaper Cuttings -->
+    <div class="bg-emerald-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+      <h4 class="text-2xl font-semibold text-emerald-800 mb-3">Newspaper Cuttings</h4>
+      <p class="text-gray-700 mb-4">Browse all press mentions and newspaper features about us.</p>
+      <a href="{% url 'foundation_app:newspaper_cuttings' %}" 
+         class="inline-block bg-emerald-500 text-white px-5 py-2 rounded-full hover:bg-emerald-600 transition duration-300 shadow-md">
+         Explore
+      </a>
+    </div>
+
+    <!-- Event Photos -->
+    <div class="bg-emerald-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+      <h4 class="text-2xl font-semibold text-emerald-800 mb-3">Event Photos</h4>
+      <p class="text-gray-700 mb-4">See snapshots from our various events and activities.</p>
+      <a href="{% url 'foundation_app:event_photos' %}"
+         class="inline-block bg-emerald-500 text-white px-5 py-2 rounded-full hover:bg-emerald-600 transition duration-300 shadow-md">
+         View Gallery
+      </a>
+    </div>
+
+    <!-- Reviews -->
+    <div class="bg-emerald-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+      <h4 class="text-2xl font-semibold text-emerald-800 mb-3">Reviews</h4>
+      <p class="text-gray-700 mb-4">Explore feedback, testimonials, and media reviews of our work.</p>
+      <a href="{% url 'foundation_app:reviews' %}"
+         class="inline-block bg-emerald-500 text-white px-5 py-2 rounded-full hover:bg-emerald-600 transition duration-300 shadow-md">
+         Explore
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Video Media Section -->
+    <section class="bg-white rounded-xl shadow-2xl p-8 border border-emerald-100">
+        <h3 class="text-4xl font-bold text-emerald-700 mb-8 text-center">Video Media</h3>
+        <p class="text-lg text-gray-700 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
+            Watch our impactful documentaries, project highlights, and testimonials from beneficiaries.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Video Media Item 1: Documentary -->
+            <div class="bg-emerald-50 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+    <!-- Updated iframe embed -->
+    <iframe class="w-full h-64 md:h-80" 
+        src="https://www.youtube.com/embed/vlZw2cO3_14" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+
+    <div class="p-6">
+        <h4 class="text-2xl font-semibold text-emerald-800 mb-3">
+            Documentary: A Story of Resilience
+        </h4>
+        <p class="text-gray-700 text-base mb-4">
+            A powerful documentary showcasing the transformation of a community through our support.
+        </p>
+
+        <!-- Updated button link -->
+        <a href="https://youtu.be/vlZw2cO3_14?si=73Lw8nySwv-td4Q9"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-block bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition duration-300 shadow-md">
+           Watch on YouTube
+        </a>
+    </div>
+</div>
+
+            <!-- Video Media Item 2: Project Highlight -->
+            <div class="bg-emerald-50 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <iframe class="w-full h-64 md:h-80" src="https://www.youtube.com/embed/gLqqsZvPOEY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="p-6">
+                    <h4 class="text-2xl font-semibold text-emerald-800 mb-3">Project Spotlight: Clean Water Initiative</h4>
+                    <p class="text-gray-700 text-base mb-4">See how our clean water project is bringing life-changing access to safe drinking water.</p>
+                    <a href="https://youtu.be/gLqqsZvPOEY" target="_blank" rel="noopener noreferrer" class="inline-block bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition duration-300 shadow-md">Watch on YouTube</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

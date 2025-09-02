@@ -1,0 +1,18 @@
+{% extends 'foundation_app/base.html' %}
+{% block title %}Latest News{% endblock %}
+{% block content %}
+<h2 class="text-3xl font-bold mb-6">Latest News</h2>
+<ul>
+  {% for news in news_list %}
+    <li class="mb-8 border-b pb-4">
+      <h3 class="text-xl font-semibold">{{ news.title }}</h3>
+      <p>{{ news.content|truncatewords:30 }}</p>
+      {% if news.link %}
+        <a href="{{ news.link }}" target="_blank" class="text-emerald-700 underline">Read Full Article</a>
+      {% endif %}
+    </li>
+  {% empty %}
+    <li>No news available.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

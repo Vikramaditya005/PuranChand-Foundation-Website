@@ -1,0 +1,31 @@
+{% extends 'foundation_app/base.html' %}
+{% load static %} {# Ensure this is present at the top to use the static tag #}
+
+{% block title %}{{ project.title }} - Puranchand Foundation{% endblock %}
+
+{% block content %}
+<section class="font-sans text-gray-800 py-16 px-4 md:px-8 bg-emerald-50 min-h-screen">
+    <div class="container mx-auto">
+        <h1 class="text-5xl font-extrabold text-center text-emerald-800 mb-10">{{ project.title }}</h1>
+
+        <div class="bg-white p-8 rounded-xl shadow-2xl border border-emerald-100">
+            {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-96 object-cover rounded-lg mb-8 shadow-lg">
+            {% else %}
+                <img src="https://placehold.co/1200x600/E0F2F7/0A1F44?text=Project+Image+Missing" alt="Placeholder Project Image" class="w-full h-96 object-cover rounded-lg mb-8 shadow-lg">
+            {% endif %}
+
+            <div class="text-lg text-gray-700 leading-relaxed mb-8">
+                <p class="mb-4">{{ project.description|linebreaksbr }}</p>
+                <p class="font-semibold text-emerald-700">Published: {{ project.created_at|date:"F d, Y" }}</p>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="{% url 'foundation_app:home' %}" class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                    &larr; Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'foundation_app/base.html' %}
+{% load static %}
+
+{% block title %}Login - Puranchand Foundation{% endblock %}
+
+{% block content %}
+<section class="font-sans text-gray-800 py-16 px-4 md:px-8 bg-emerald-50 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto max-w-md">
+        <div class="bg-white p-8 rounded-xl shadow-2xl border border-emerald-100">
+            <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-8">Login to Your Account</h2>
+
+            {% if login_error %}
+                <div class="mb-6 p-4 bg-red-100 text-red-700 rounded-lg text-center text-lg shadow-md" role="alert">
+                    {{ login_error }}
+                </div>
+            {% endif %}
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="mb-6 p-4 {% if message.tags == 'success' %}bg-green-100 text-green-700{% elif message.tags == 'error' %}bg-red-100 text-red-700{% else %}bg-blue-100 text-blue-700{% endif %} rounded-lg text-center text-lg shadow-md" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" action="{% url 'foundation_app:login' %}">
+                {% csrf_token %}
+                <div class="mb-6">
+                    <label for="{{ form.username.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ form.username.label }}</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.username.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-6">
+                    <label for="{{ form.password.id_for_label }}" class="block text-gray-700 text-lg font-medium mb-2">{{ form.password.label }}</label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.password.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-full text-xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-emerald-300 flex items-center justify-center"
+                >
+                    Login
+                </button>
+            </form>
+
+            <p class="mt-6 text-center text-gray-600">
+                Don't have an account?
+                <a href="{% url 'foundation_app:signup' %}" class="text-emerald-600 hover:text-emerald-800 font-semibold">Sign Up</a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

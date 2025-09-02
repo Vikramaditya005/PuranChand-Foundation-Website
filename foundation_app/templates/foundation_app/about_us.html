@@ -1,0 +1,55 @@
+{% extends 'foundation_app/base.html' %}
+
+{% block title %}About Us - Puranchand Foundation{% endblock %}
+
+{% block content %}
+<section class="font-sans text-gray-800 py-16 px-4 md:px-8 bg-emerald-50 min-h-screen">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-12">About Our Foundation</h2>
+
+        <div class="bg-white p-8 rounded-xl shadow-2xl border border-emerald-100 mb-12">
+            <h3 class="text-3xl font-bold text-emerald-700 mb-6">Our Story and Vision</h3>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            PuranChand Foundation: A Legacy of Service Puranchand Foundation is an Organization with no profit motives. The PuranChand Foundation has been established, inspired by the late former minister and freedom fighter, PuranChand Ji, who was a messiah for the poor. The people of Daltonganj Assembly constituency were captivated by his simplicity. The public knew him affectionately as 'Ghasite Ka Kotha', 'Dharmshale Ka Lota', and 'Pinku Ka Ota'. PuranChand Ji represented the Daltonganj Assembly constituency four times consecutively (1967, 1969, 1972, 1977). His contributions can never be forgotten. PuranChand was born on Kartik Purnima in 1925. At just 14 years old, he was inspired by Mahatma Gandhi and dedicated himself to the country's independence. When PuranChand was imprisoned on August 31, 1942, during the struggle for freedom, he was less than 17 years old. Later, when he was jailed during the Emergency on June 29, 1975, he was nearing 50.
+
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                A Staunch Opponent of Injustice: From before independence, against foreign rule, to after independence, against the Congress-led government of Indira Gandhi, PuranChand Ji displayed the same fierce opposition. His intensity against the British policies was matched by his intensity against the policies of the Congress government. PuranChand had such a strong hold among the public that people would sing songs like, "Your eyes may burst, Congressmen, but the vote goes to PuranChand." He came to be known as "Puran isn't just a name, he's a storm; the Gandhi of Chota Nagpur."
+
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Life in Prison and Lohia's Influence: He was imprisoned countless times, from the British rule to the Congress rule, considering it his second home. He used to say that one of his feet was always in jail, and Ward No. Six of Daltonganj Jail was his permanent abode. PuranChand Ji was deeply influenced by Dr. Ram Manohar Lohia's personality. This can be seen in his traits: struggling spirit, grassroots connection with people, and strong determination. In 1977, PuranChand Ji served as the Minister of Mines in the Karpoori Thakur cabinet. This great warrior of the socialist movement breathed his last on July 30, 2001.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="bg-white p-8 rounded-xl shadow-xl border border-emerald-100">
+                <h3 class="text-3xl font-bold text-emerald-700 mb-6">Our Core Values</h3>
+                <ul class="list-disc list-inside text-lg text-gray-700 space-y-3">
+                    <li>Integrity: Upholding the highest ethical standards in all our operations.</li>
+                    <li>Compassion: Approaching our work with empathy and understanding for those we serve.</li>
+                    <li>Collaboration: Believing in the power of partnerships to achieve greater impact.</li>
+                    <li>Innovation: Constantly seeking new and effective solutions to complex challenges.</li>
+                    <li>Sustainability: Committing to practices that ensure long-term well-being for people and the planet.</li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-xl border border-emerald-100">
+                <div class="container mx-auto py-16 px-4 md:px-8 text-center">
+        <h2 class="text-4xl font-extrabold text-emerald-800 mb-8">Want to know more about the people behind our mission?</h2>
+        <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+            Our dedicated team is at the heart of everything we do. Learn more about the individuals who make our impact possible.
+        </p>
+        <button
+            onClick="window.location.href='{% url 'foundation_app:team' %}'"
+            class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transform transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-emerald-300 glowing-button"
+        >
+            Meet Our Team
+        </button>
+    </div>
+
+</section>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'foundation_app/base.html' %}
+{% load static %}
+
+{% block title %}Our Team - Puranchand Foundation{% endblock %}
+
+{% block content %}
+<section class="font-sans text-gray-800 py-16 px-4 md:px-8 bg-emerald-50 min-h-screen">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-12">Meet Our Dedicated Team</h2>
+
+        <p class="text-lg text-gray-700 leading-relaxed text-center max-w-3xl mx-auto mb-12">
+            Our foundation's success is driven by the passion, expertise, and unwavering commitment of our team members. Each individual brings unique skills and a shared vision for creating positive change.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 border border-emerald-100">
+                <img src="{% static 'foundation_app/images/234.jpg' %}" alt="Mahesh Prasad" class="w-36 h-36 rounded-full object-cover mb-4 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Mahesh Prasad</h3>
+                <p class="text-emerald-600 font-semibold mb-3">Chairman</p>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Mahesh envisioned Puranchand Foundation as a beacon of hope, dedicated to empowering communities through sustainable development. His leadership inspires our every step.
+                </p>
+            </div>
+
+            <!-- Team Member 5 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 border border-emerald-100">
+                <img src="{% static 'foundation_app/images/237.jpg' %}" alt="Sunil Prasad" class="w-36 h-36 rounded-full object-cover mb-4 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Sunil Prasad</h3>
+                <p class="text-emerald-600 font-semibold mb-3">Vice Chairman</p>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Sunil is a key pillar of our leadership, offering invaluable guidance and support to all our initiatives. His commitment to our mission is unwavering.
+                </p>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 border border-emerald-100">
+                <img src="{% static 'foundation_app/images/img317.jpg' %}" alt="Abhijeet Kumar" class="w-36 h-36 rounded-full object-cover mb-4 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Abhijeet Kumar</h3>
+                <p class="text-emerald-600 font-semibold mb-3">Secretary</p>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Abhijeet leads our ground-level initiatives, ensuring that our projects are effectively implemented and reach those who need them most. His dedication is invaluable.
+                </p>
+                <div class="flex space-x-3 mt-4">
+                    <a href="https://www.linkedin.com/in/abhijeet-kumar-1a9344145/" target="_blank" class="text-gray-500 hover:text-emerald-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.063 2.062 2.062 0 012.063-2.062 2.062 2.062 0 012.062 2.062 2.062 2.062 0 01-2.062 2.063zm-.005 13.012H8.85V9H5.332v11.445z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/abhijeetsonu42?igsh=ejNocmkyazdmajc2" target="_blank" class="text-gray-500 hover:text-emerald-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0h9a7.5 7.5 0 017.5 7.5v9a7.5 7.5 0 01-7.5 7.5h-9A7.5 7.5 0 010 16.5v-9A7.5 7.5 0 017.5 0zm-.75 2.25a.75.75 0 100 1.5.75.75 0 000-1.5zM12 6a6 6 0 100 12 6 6 0 000-12zm0 2.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Team Member 4 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 border border-emerald-100">
+                <img src="{% static 'foundation_app/images/236.jpg' %}" alt="Anup Kumar" class="w-36 h-36 rounded-full object-cover mb-4 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Anup Kumar</h3>
+                <p class="text-emerald-600 font-semibold mb-3">General Secretary</p>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Anup is the driving force behind our strategic planning and operational excellence. His vision ensures the foundation remains at the forefront of social change.
+                </p>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 border border-emerald-100">
+                <img src="{% static 'foundation_app/images/235.jpg' %}" alt="Sundaram Prakash" class="w-36 h-36 rounded-full object-cover mb-4 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Sundaram Prakash</h3>
+                <p class="text-emerald-600 font-semibold mb-3">Treasurer</p>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Sundaram ensures the financial health and transparency of the foundation. His meticulous approach guarantees that every contribution is used for maximum impact.
+                </p>
+            </div>
+
+            <!-- Team Member Amardeep -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 border border-emerald-100">
+                <img src="{% static 'foundation_app/images/243.jpg' %}" alt="Amardeep Kumar" class="w-36 h-36 rounded-full object-cover mb-4 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Amardeep Kumar</h3>
+                <p class="text-emerald-600 font-semibold mb-3">Youth Icon</p>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Amardeep represents the voice of the youth within our organization. His energy and innovative ideas help us connect with younger generations and inspire future leaders.
+                </p>
+                <div class="flex space-x-3 mt-4">
+                    <a href="https://www.linkedin.com/in/amardeep-kumar-a3a7b0381?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-gray-500 hover:text-emerald-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.063 2.062 2.062 0 012.063-2.062 2.062 2.062 0 012.062 2.062 2.062 2.062 0 01-2.062 2.063zm-.005 13.012H8.85V9H5.332v11.445z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/agriculture_college_bau?igsh=MWQ3YWJxMGdlN2M3bQ==" target="_blank" class="text-gray-500 hover:text-emerald-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0h9a7.5 7.5 0 017.5 7.5v9a7.5 7.5 0 01-7.5 7.5h-9A7.5 7.5 0 010 16.5v-9A7.5 7.5 0 017.5 0zm-.75 2.25a.75.75 0 100 1.5.75.75 0 000-1.5zM12 6a6 6 0 100 12 6 6 0 000-12zm0 2.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Team Member Sanjay -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 border border-emerald-100">
+                <img src="{% static 'foundation_app/images/241.jpg' %}" alt="Sanjay Kumar Mahto" class="w-36 h-36 rounded-full object-cover mb-4 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Sanjay Kumar Mahto</h3>
+                <p class="text-emerald-600 font-semibold mb-3">Board Member</p>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Sanjay is a dedicated member who actively participates in our projects and events. His enthusiasm and commitment are vital to our community outreach efforts.
+                </p>
+                <div class="flex space-x-3 mt-4">
+                    <a href="https://www.linkedin.com/in/sanjaykumarmahto?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-gray-500 hover:text-emerald-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.063 2.062 2.062 0 012.063-2.062 2.062 2.062 0 012.062 2.062 2.062 2.062 0 01-2.062 2.063zm-.005 13.012H8.85V9H5.332v11.445z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/ksanjaysan?igsh=MXF5OWlmZWZjZzdyaw==" target="_blank" class="text-gray-500 hover:text-emerald-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0h9a7.5 7.5 0 017.5 7.5v9a7.5 7.5 0 01-7.5 7.5h-9A7.5 7.5 0 010 16.5v-9A7.5 7.5 0 017.5 0zm-.75 2.25a.75.75 0 100 1.5.75.75 0 000-1.5zM12 6a6 6 0 100 12 6 6 0 000-12zm0 2.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Team Member Dr. Baskey -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 border border-emerald-100">
+                <img src="{% static 'foundation_app/images/242.jpg' %}" alt="Dr. G.C Baskey" class="w-36 h-36 rounded-full object-cover mb-4 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Dr. G.C Baskey</h3>
+                <p class="text-emerald-600 font-semibold mb-3">Mentor</p>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Dr. Baskey provides expert guidance and mentorship to our team, drawing from his extensive experience in public service and community development.
+                </p>
+                <div class="flex space-x-3 mt-4">
+                    <a href="https://www.linkedin.com/in/ganesh-chandra-baskey-2a621458?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-gray-500 hover:text-emerald-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.063 2.062 2.062 0 012.063-2.062 2.062 2.062 0 012.062 2.062 2.062 2.062 0 01-2.062 2.063zm-.005 13.012H8.85V9H5.332v11.445z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/ganesh.c.baskey?igsh=MXkxN3pvbWJ3ZXdmMw==" target="_blank" class="text-gray-500 hover:text-emerald-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0h9a7.5 7.5 0 017.5 7.5v9a7.5 7.5 0 01-7.5 7.5h-9A7.5 7.5 0 010 16.5v-9A7.5 7.5 0 017.5 0zm-.75 2.25a.75.75 0 100 1.5.75.75 0 000-1.5zM12 6a6 6 0 100 12 6 6 0 000-12zm0 2.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

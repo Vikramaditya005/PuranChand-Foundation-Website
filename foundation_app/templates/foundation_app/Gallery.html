@@ -1,0 +1,107 @@
+{% extends 'foundation_app/base.html' %}
+
+{% load static %} {# Ensure this is present at the top #}
+
+{% block title %}Gallery - Puranchand Foundation{% endblock %}
+
+{% block content %}
+<section class="font-sans text-gray-800 py-16 px-4 md:px-8 bg-emerald-50 min-h-screen">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-extrabold text-center text-emerald-800 mb-12">Our Impact in Pictures</h2>
+
+        <div class="bg-white p-8 rounded-xl shadow-2xl border border-emerald-100 mb-12 text-center">
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Welcome to our gallery, a visual journey through the positive change we're creating together. These images capture moments of empowerment, progress, and community spirit from our various projects around the world.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_1.jpg' %}" alt="Project 1" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-emerald-700 mb-2">MOU Between Foundation and Shivani Biotech</h3>
+                    <p class="text-gray-700 text-sm">It is done for the skill development and need of professionalism in the Agricultural Industry.
+</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_2.jpg' %}" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-teal-700 mb-2">MOU between Foundation and Vijayfood and Catering</h3>
+                    <p class="text-gray-700 text-sm">It is done for the skill development and need of professionalism in the Food Industry and Event Management.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_3.jpg' %}" alt="Project 3" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-purple-700 mb-2">MOU between Foundation and Navdivyam Education </h3>
+                    <p class="text-gray-700 text-sm">It is done for the skill development and need of professionalism in the Social Sector.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_4.jpg' %}" alt="Project 4" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-orange-700 mb-2">MOU between Foundation and Cheveux Vuition</h3>
+                    <p class="text-gray-700 text-sm">It is done for promoting the Salon Buisness in the region.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_18.jpg' %}" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-teal-700 mb-2">MOU between Foundation and Nirmal Pravidya Infotech</h3>
+                    <p class="text-gray-700 text-sm">It is done for the skill development and need of professionalism in the IT Industry.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_19.jpg' %}" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-teal-700 mb-2">MOU between Foundation and Driveown Enterprise</h3>
+                    <p class="text-gray-700 text-sm">It is done for the skill development and need of professionalism in the Automobile Industry.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_5.jpg' %}" alt="Project 5" class="w-full h-48 object-cover"> {# Updated to static tag #}
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-cyan-700 mb-2">MOU between Foundation and outtought taxation </h3>
+                    <p class="text-gray-700 text-sm">It is done for the skill development and need of professionalism in the finance and taxation sector.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_6.jpg' %}" alt="Project 6" class="w-full h-48 object-cover"> {# Updated to static tag #}
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-indigo-700 mb-2">MOU between Foundation and Flingro Tech Services</h3>
+                    <p class="text-gray-700 text-sm">It is done for the skill development in the Drone Technology.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image.jpg' %}" alt="Project 7" class="w-full h-48 object-cover"> {# Updated to static tag #}
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-pink-700 mb-2">Foundation's Buisness Cell</h3>
+                    <p class="text-gray-700 text-sm">Support groups and micro-finance initiatives.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_8.jpg' %}" alt="Project 8" class="w-full h-48 object-cover"> {# Updated to static tag #}
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-lime-700 mb-2">Education Drive</h3>
+                    <p class="text-gray-700 text-sm">Distributing school supplies in rural communities.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/img550.jpg' %}" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-teal-700 mb-2">Student Development Program At DSPMU</h3>
+                    <p class="text-gray-700 text-sm">It is done for the skill development and need of professionalism in the Food Industry and Event Management.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{% static 'foundation_app/images/gallery_image_20.jpg' %}" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl text-teal-700 mb-2"></h3>
+                    <p class="text-gray-700 text-sm"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
