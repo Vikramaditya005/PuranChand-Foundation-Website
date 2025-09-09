@@ -132,27 +132,6 @@ class Review(models.Model):
     def __str__(self):
         return self.title
 
-class Campaign(models.Model):
-    # The title of the fundraising campaign.
-    title = models.CharField(max_length=200)
-
-    # The financial goal for the campaign in Indian Rupees.
-    goal_amount = models.IntegerField()
-
-    # A detailed description of the campaign.
-    description = models.TextField()
-
-    # The user who created this campaign. The on_delete=models.CASCADE
-    # ensures that if a user is deleted, their campaigns are also deleted.
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='campaigns')
-
-    # The date and time the campaign was created.
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        # A human-readable representation of the Campaign model.
-        return self.title
-
 # foundation_app/models.py
 from django.db import models
 from django.contrib.auth.models import User
@@ -170,6 +149,21 @@ class Campaign(models.Model):
         if self.goal_amount > 0:
             return (self.raised_amount / self.goal_amount) * 100
         return 0
+
+    def __str__(self):
+        return self.title
+class GalleryImage(models.Model):
+    """
+    Represents additional gallery images uploaded via the admin.
+    These will show along with your fixed static images.
+    """
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to="gallery/")  # stored in Cloudinary or media/
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     def __str__(self):
         return self.title

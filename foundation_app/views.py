@@ -362,3 +362,9 @@ def volunteer_page(request):
         "form": form,
         "volunteers": volunteers,
     })
+from django.shortcuts import render
+from .models import GalleryImage
+
+def gallery_view(request):
+    images = GalleryImage.objects.all()
+    return render(request, "foundation_app/gallery.html", {"images": images})

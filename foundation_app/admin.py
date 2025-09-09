@@ -81,3 +81,9 @@ class CampaignAdmin(admin.ModelAdmin):
         return obj.user.username   # or obj.user.get_full_name()
     created_by.admin_order_field = 'user'   # makes it sortable
     created_by.short_description = 'Created By'
+from django.contrib import admin
+from .models import GalleryImage
+
+@admin.register(GalleryImage)
+class GalleryImageAdmin(admin.ModelAdmin):
+    list_display = ("title", "created_at")
