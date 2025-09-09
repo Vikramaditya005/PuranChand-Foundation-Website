@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-4&*0w_u(-8=%g7u@+zye)wo_7!yy_^&w=e$4&wak_a0vr&dfl#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 ALLOWED_HOSTS = [
-    'puranchand-foundation-website-8.onrender.com',
+    'puranchand-foundation-website-9.onrender.com',
     '127.0.0.1',
     'localhost',
     '.ngrok-free.app',
