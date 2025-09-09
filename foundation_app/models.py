@@ -153,10 +153,6 @@ class Campaign(models.Model):
     def __str__(self):
         return self.title
 class GalleryImage(models.Model):
-    """
-    Represents additional gallery images uploaded via the admin.
-    These will show along with your fixed static images.
-    """
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="gallery/")  # stored in Cloudinary or media/
