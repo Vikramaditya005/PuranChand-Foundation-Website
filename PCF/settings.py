@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-4&*0w_u(-8=%g7u@+zye)wo_7!yy_^&w=e$4&wak_a0vr&dfl#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 ALLOWED_HOSTS = [
-    'puranchand-foundation-website-11.onrender.com',
+    'puranchand-foundation-website-13.onrender.com',
     '127.0.0.1',
     'localhost',
     '.ngrok-free.app',
@@ -145,8 +145,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Razorpay credentials
 RAZORPAY_KEY_ID = "rzp_test_RCeQhXtvZuW3nm"

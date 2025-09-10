@@ -16,7 +16,6 @@ app_name = 'foundation_app'
 
 urlpatterns = [
     # General Pages
-    path('',include('foundation_app.urls', namespace='foundation_app')),
     path('', HomeView.as_view(), name='home'),
     path('about-us/', AboutUsView.as_view(), name='about_us'),
     path('team/', TeamView.as_view(), name='team'),
