@@ -5,26 +5,19 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-4&*0w_u(-8=%g7u@+zye)wo_7!yy_^&w=e$4&wak_a0vr&dfl#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
-    'puranchand-foundation-website-13.onrender.com',
-    '127.0.0.1',
-    'localhost',
-    '.ngrok-free.app',
-    'puranchandfoundation.org',
-    # Add your custom domain here too, if you have one
+    os.environ.get("RENDER_EXTERNAL_HOSTNAME", ""),
+    "127.0.0.1",
+    "localhost",
+    ".ngrok-free.app",
+    "puranchandfoundation.org",
+    "www.puranchandfoundation.org",
+    ".onrender.com",
 ]
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,9 +34,9 @@ INSTALLED_APPS = [
 # ---------------- Cloudinary ---------------- #
 # Use environment variables, not raw keys here
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME': os.getenv('drjrioej8'),
+    'API_KEY': os.getenv('737519398591391'),
+    'API_SECRET': os.getenv('CKaHFiL2ICjCkp-GGbwOoNxYdfk'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -149,3 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Razorpay credentials
 RAZORPAY_KEY_ID = "rzp_test_RCeQhXtvZuW3nm"
 RAZORPAY_KEY_SECRET = "8WhtWulOvpImkKNmRM0829Ym"
+# Redirects for login/logout
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'   # after successful login
+LOGOUT_REDIRECT_URL = '/'            # after logout

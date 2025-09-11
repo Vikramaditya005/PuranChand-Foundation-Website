@@ -269,12 +269,6 @@ from .models import Campaign
 
 @login_required
 def dashboard(request):
-    """
-    User dashboard:
-    - Shows volunteers
-    - Shows campaigns
-    - Lets users launch new campaigns
-    """
     # Forms
     campaign_form = CampaignForm()
     volunteer_form = VolunteerForm()

@@ -27,7 +27,6 @@ urlpatterns = [
     path("dashboard/", dashboard, name="dashboard"),
     path('launch-campaign/', launch_campaign, name='launch_campaign'),
     path('volunteer/submit/', volunteer_submit, name='volunteer_submit'),
-
     # Media Centre and News
     path('media-centre/', MediaCentreView.as_view(), name='media_centre'),
     path('news/', NewsListView.as_view(), name='news_list'),
@@ -46,5 +45,5 @@ urlpatterns = [
     # User Authentication
     path('signup/', UserSignupView.as_view(), name='signup'),
     path("login/", UserLoginView.as_view(), name="login"),
-    path("logout/", views.custom_logout, name="logout"),
+   path("logout/", LogoutView.as_view(next_page="foundation_app:home"), name="logout"),
 ]
