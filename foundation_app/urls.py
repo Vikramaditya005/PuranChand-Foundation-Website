@@ -19,7 +19,7 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('about-us/', AboutUsView.as_view(), name='about_us'),
     path('team/', TeamView.as_view(), name='team'),
-    path('gallery/', views.GalleryView.as_view(), name='gallery'),
+    path('gallery/', views.gallery_view, name='gallery'),
     path('contact/', ContactView.as_view(), name='contact'),
     path("volunteer/", views.volunteer_page, name="volunteer_page"),
 
@@ -45,5 +45,5 @@ urlpatterns = [
     # User Authentication
     path('signup/', UserSignupView.as_view(), name='signup'),
     path("login/", UserLoginView.as_view(), name="login"),
-   path("logout/", LogoutView.as_view(next_page="foundation_app:home"), name="logout"),
+    path("logout/", LogoutView.as_view(next_page="foundation_app:home"), name="logout"),
 ]

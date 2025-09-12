@@ -50,11 +50,7 @@ class TeamView(TemplateView):
     template_name = 'foundation_app/team.html'
 
 
-class GalleryView(TemplateView):
-    """
-    Renders the 'Gallery' page.
-    """
-    template_name = 'foundation_app/gallery.html'
+
 
 
 class ContactView(View):
