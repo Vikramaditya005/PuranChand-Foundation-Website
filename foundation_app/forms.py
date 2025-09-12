@@ -7,10 +7,7 @@ from django.contrib.auth.password_validation import UserAttributeSimilarityValid
 from django.core.exceptions import ValidationError
 
 class ContactForm(forms.ModelForm):
-    """
-    A Django ModelForm for handling contact message submissions.
-    It automatically generates fields based on the ContactMessage model.
-    """
+
     class Meta:
         model = ContactMessage
         fields = ['name', 'email', 'subject', 'message']
@@ -54,15 +51,11 @@ class VolunteerForm(forms.ModelForm):
 
 
 class UserLoginForm(AuthenticationForm):
-    """
-    A custom login form inheriting from Django's built-in AuthenticationForm.
-    Customizes widgets for Tailwind CSS styling to allow login via username.
-    """
     username = forms.CharField(
         label="Username",
         widget=forms.TextInput(attrs={
             'class': 'w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg transition-colors duration-200',
-            'placeholder': 'Your Username'
+                'placeholder': 'Your Username'
         })
     )
     password = forms.CharField(
@@ -73,12 +66,11 @@ class UserLoginForm(AuthenticationForm):
         })
     )
 
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 class UserSignupForm(UserCreationForm):
-    """
-    A custom signup form inheriting from Django's built-in UserCreationForm.
-    Adds first_name and last_name fields and customizes widgets for Tailwind CSS styling.
-    It also overrides password validators to exclude UserAttributeSimilarityValidator.
-    """
     email = forms.EmailField(
         label="Email",
         max_length=254,
@@ -90,7 +82,7 @@ class UserSignupForm(UserCreationForm):
     first_name = forms.CharField(
         label="First Name",
         max_length=30,
-        required=False, # Make it optional, or True if you want it mandatory
+        required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg transition-colors duration-200',
             'placeholder': 'Your First Name'
@@ -99,39 +91,27 @@ class UserSignupForm(UserCreationForm):
     last_name = forms.CharField(
         label="Last Name",
         max_length=150,
-        required=False, # Make it optional, or True if you want it mandatory
+        required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg transition-colors duration-200',
             'placeholder': 'Your Last Name'
         })
     )
 
-    class Meta(UserCreationForm.Meta):
-        model = UserCreationForm.Meta.model
-        # Add email, first_name, and last_name to the fields
-        fields = UserCreationForm.Meta.fields + ('email', 'first_name', 'last_name',)
-        password_validators = [
-            MinimumLengthValidator(min_length=8),
-            CommonPasswordValidator(),
-            NumericPasswordValidator(),
-            # Add other validators if you have custom ones in settings.py
-        ]
-
+    class Meta:
+        model = User
+        fields = ("username", "email", "first_name", "last_name", "password1", "password2")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Apply Tailwind classes to default fields like username and password fields
         for field_name in ['username', 'password1', 'password2']:
             if field_name in self.fields:
                 self.fields[field_name].widget.attrs.update({
                     'class': 'w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg transition-colors duration-200',
-                    'placeholder': self.fields[field_name].label # Use label as placeholder
+                    'placeholder': self.fields[field_name].label
                 })
+
     def save(self, commit=True):
-        """
-        Overrides the save method to ensure email, first_name, and last_name
-        are properly saved to the user instance.
-        """
         user = super().save(commit=False)
         user.email = self.cleaned_data["email"]
         user.first_name = self.cleaned_data.get("first_name", "")
@@ -139,6 +119,7 @@ class UserSignupForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
 
 class CampaignForm(forms.ModelForm):
     class Meta:

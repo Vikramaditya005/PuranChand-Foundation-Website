@@ -1,8 +1,7 @@
 from django.urls import path, include
 from . import views
 from .views import (
-    HomeView, ContactView, AboutUsView,
-    GalleryView, TeamView, MediaCentreView,
+    HomeView, ContactView, AboutUsView, TeamView, MediaCentreView,
     NewsListView, NewsDetailView, AllProjectsView,
     ProjectDetailView, UserSignupView, volunteer_submit,
     dashboard, VideoListView, ReviewListView, UserLoginView,

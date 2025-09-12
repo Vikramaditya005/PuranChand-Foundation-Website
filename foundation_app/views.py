@@ -13,10 +13,6 @@ from .forms import ContactForm, VolunteerForm, CampaignForm
 # Class-based Views
 # ------------------------------------------------------------
 class HomeView(TemplateView):
-    """
-    Renders the home page of the foundation website.
-    Fetches a few latest projects to display.
-    """
     template_name = 'foundation_app/home.html'
 
     def get_context_data(self, **kwargs):
@@ -27,10 +23,6 @@ class HomeView(TemplateView):
 
 
 class ProjectDetailView(DetailView):
-    """
-    Renders a detailed page for a specific project.
-    Uses Django's DetailView to fetch the object by primary key (pk).
-    """
     model = Project
     template_name = 'foundation_app/project_detail.html'
     context_object_name = 'project'
@@ -101,19 +93,23 @@ def launch_campaign(request):
     return redirect(reverse('foundation_app:dashboard'))
 
 
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.views.generic import TemplateView
+from .forms import UserLoginForm   # import your custom form
+
+
 class UserLoginView(TemplateView):
-    """
-    Handles user login.
-    """
     template_name = 'foundation_app/login.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = AuthenticationForm()
+        context['form'] = UserLoginForm()   # use custom form
         return context
 
     def post(self, request, *args, **kwargs):
-        form = AuthenticationForm(request, data=request.POST)
+        form = UserLoginForm(request, data=request.POST)  # use custom form
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -129,19 +125,18 @@ class UserLoginView(TemplateView):
         return render(request, self.template_name, {'form': form})
 
 
+from .forms import UserSignupForm  # import your custom form
+
 class UserSignupView(TemplateView):
-    """
-    Handles user signup.
-    """
     template_name = 'foundation_app/signup.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = UserCreationForm()
+        context['form'] = UserSignupForm()   # use your custom form
         return context
 
     def post(self, request, *args, **kwargs):
-        form = UserCreationForm(request.POST)
+        form = UserSignupForm(request.POST)  # use your custom form
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
