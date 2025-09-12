@@ -8,10 +8,6 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 from .models import News, ContactMessage, Project, Volunteer, Podcast, Video, NewspaperCutting, EventPhoto, Review, Campaign
 from .forms import ContactForm, VolunteerForm, CampaignForm
-
-
-# Class-based Views
-# ------------------------------------------------------------
 class HomeView(TemplateView):
     template_name = 'foundation_app/home.html'
 
@@ -29,26 +25,13 @@ class ProjectDetailView(DetailView):
 
 
 class AboutUsView(TemplateView):
-    """
-    Renders the 'About Us' page.
-    """
     template_name = 'foundation_app/about_us.html'
 
 
 class TeamView(TemplateView):
-    """
-    Renders the 'Our Team' page.
-    """
     template_name = 'foundation_app/team.html'
 
-
-
-
-
 class ContactView(View):
-    """
-    Handles the contact form submission and renders the contact page.
-    """
     template_name = 'foundation_app/contact.html'
 
     def get(self, request, *args, **kwargs):
@@ -73,13 +56,7 @@ class ContactView(View):
         else:
             messages.error(request, 'Please correct the errors in the form.')
         return render(request, self.template_name, {'form': form})
-   
-
-
 def launch_campaign(request):
-    """
-    Handles the form submission for launching a new campaign.
-    """
     if request.method == 'POST':
         form = CampaignForm(request.POST)
         if form.is_valid():
@@ -146,36 +123,24 @@ class UserSignupView(TemplateView):
 
 
 class NewsListView(ListView):
-    """
-    Displays a list of all news articles.
-    """
     model = News
     template_name = 'foundation_app/news_list.html'
     context_object_name = 'news_list'
 
 
 class NewsDetailView(DetailView):
-    """
-    Displays a detailed page for a specific news article.
-    """
     model = News
     template_name = 'foundation_app/news_detail.html'
     context_object_name = 'news_article'
 
 
 class AllProjectsView(ListView):
-    """
-    Displays a list of all projects.
-    """
     model = Project
     template_name = 'foundation_app/all_projects.html'
     context_object_name = 'all_projects'
 
 
 class MediaCentreView(TemplateView):
-    """
-    Renders the 'Media Centre' page.
-    """
     template_name = 'foundation_app/media_centre.html'
 
     def get_context_data(self, **kwargs):
@@ -185,54 +150,36 @@ class MediaCentreView(TemplateView):
 
 
 class PodcastListView(ListView):
-    """
-    Displays a list of all podcasts.
-    """
     model = Podcast
     template_name = "foundation_app/podcast_list.html"
     context_object_name = "podcasts"
 
 
 class VideoListView(ListView):
-    """
-    Displays a list of all videos.
-    """
     model = Video
     template_name = "foundation_app/video_list.html"
     context_object_name = "videos"
 
 
 class NewspaperCuttingListView(ListView):
-    """
-    Displays a list of all newspaper cuttings.
-    """
     model = NewspaperCutting
     template_name = "foundation_app/newspaper_cuttings.html"
     context_object_name = "cuttings"
 
 
 class EventPhotoListView(ListView):
-    """
-    Displays a list of all event photos.
-    """
     model = EventPhoto
     template_name = "foundation_app/event_photos.html"
     context_object_name = "photos"
 
 
 class ReviewListView(ListView):
-    """
-    Displays a list of all reviews.
-    """
     model = Review
     template_name = "foundation_app/review_list.html"
     context_object_name = "reviews"
 
 
 def volunteer_submit(request):
-    """
-    Handles the volunteer form submission.
-    """
     if request.method == 'POST':
         form = VolunteerForm(request.POST)
         if form.is_valid():
@@ -244,9 +191,6 @@ def volunteer_submit(request):
 
 
 def custom_logout(request):
-    """
-    Handles user logout.
-    """
     if request.method == "POST":
         logout(request)
         messages.info(request, "You have been logged out.")
@@ -353,3 +297,4 @@ from .models import GalleryImage
 def gallery_view(request):
     images = GalleryImage.objects.all()
     return render(request, "foundation_app/gallery.html", {"images": images})
+
