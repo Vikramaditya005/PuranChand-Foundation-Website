@@ -1,207 +1,168 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Puranchand Foundation{% endblock %}</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Custom glowing effect for buttons */
-        .glowing-button {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .glowing-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
-            transition: all 0.7s ease-out;
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
-            z-index: -1;
-        }
-        .glowing-button:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-        /* Active nav link styling */
-        .nav-link.active {
-            background-color: white;
-            color: #10B981; /* emerald-600 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: scale(1.05);
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="min-h-screen bg-gray-50">
-    <nav class="bg-gradient-to-r from-emerald-700 to-teal-800 p-4 shadow-lg sticky top-0 z-50 rounded-b-xl">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <!-- Logo or Foundation Name -->
-            <div class="text-white text-3xl font-extrabold tracking-tight mb-3 md:mb-0">
-                <a href="{% url 'foundation_app:home' %}" class="text-white no-underline hover:text-white">
-                    <span class="bg-white text-emerald-700 px-2 py-1 rounded-lg mr-2 shadow-md">Puranchand</span>Foundation
-                </a>
-            </div>
+<body class="bg-gray-100 text-gray-900">
 
-           <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 text-lg">
-    <li>
-        <a href="{% url 'foundation_app:home' %}"
-           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'home' %}active{% endif %}">
-           <i class="fa-solid fa-house text-lg"></i>
-           <span class="text-xs md:text-sm mt-1">Home</span>
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'foundation_app:about_us' %}"
-           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'about_us' %}active{% endif %}">
-           <i class="fa-solid fa-circle-info text-lg"></i>
-           <span class="text-xs md:text-sm mt-1">About Us</span>
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'foundation_app:dashboard' %}"
-           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'dashboard' %}active{% endif %}">
-           <i class="fa-solid fa-chart-line text-lg"></i>
-           <span class="text-xs md:text-sm mt-1">Dashboard</span>
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'foundation_app:contact' %}"
-           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'contact' %}active{% endif %}">
-           <i class="fa-solid fa-envelope text-lg"></i>
-           <span class="text-xs md:text-sm mt-1">Contact</span>
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'foundation_app:gallery' %}"
-           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'gallery' %}active{% endif %}">
-           <i class="fa-solid fa-images text-lg"></i>
-           <span class="text-xs md:text-sm mt-1">Gallery</span>
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'foundation_app:media_centre' %}"
-           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'media_centre' %}active{% endif %}">
-           <i class="fa-solid fa-newspaper text-lg"></i>
-           <span class="text-xs md:text-sm mt-1">Media Centre</span>
-        </a>
-    </li>
-    {% if user.is_authenticated %}
-    <li>
-        <form method="post" action="{% url 'foundation_app:logout' %}" class="flex flex-col items-center">
-            {% csrf_token %}
-            <button type="submit"
-                class="nav-link flex flex-col items-center px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700 shadow-md transform scale-105 transition-all duration-300 ease-in-out">
-                <i class="fa-solid fa-right-from-bracket text-lg"></i>
-                <span class="text-xs md:text-sm mt-1">Logout</span>
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-emerald-700 to-teal-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <!-- Logo -->
+            <a href="{% url 'foundation_app:home' %}" class="text-white text-2xl font-extrabold tracking-tight">
+                <span class="bg-white text-emerald-700 px-2 py-1 rounded-lg shadow-md">Puranchand</span> Foundation
+            </a>
+
+            <!-- Hamburger (mobile only) -->
+            <button id="menu-btn" class="text-white text-2xl md:hidden focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
             </button>
-        </form>
-    </li>
-{% else %}
-    <li>
-        <a href="{% url 'foundation_app:login' %}"
-           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-md transform scale-105 transition-all duration-300 ease-in-out">
-           <i class="fa-solid fa-right-to-bracket text-lg"></i>
-           <span class="text-xs md:text-sm mt-1">Login</span>
-        </a>
-    </li>
-{% endif %}
-</ul>
+
+            <!-- Menu -->
+            <ul id="menu"
+                class="hidden flex-col md:flex md:flex-row md:space-x-8 space-y-2 md:space-y-0 mt-4 md:mt-0 text-lg text-white">
+
+                <li>
+                    <a href="{% url 'foundation_app:home' %}" class="nav-link flex flex-col items-center px-4 py-2 hover:text-emerald-300 {% if current_page == 'home' %}active{% endif %}">
+                        <i class="fa-solid fa-house text-lg"></i>
+                        <span class="text-xs md:text-sm mt-1">Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'foundation_app:about_us' %}" class="nav-link flex flex-col items-center px-4 py-2 hover:text-emerald-300 {% if current_page == 'about_us' %}active{% endif %}">
+                        <i class="fa-solid fa-circle-info text-lg"></i>
+                        <span class="text-xs md:text-sm mt-1">About Us</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'foundation_app:dashboard' %}" class="nav-link flex flex-col items-center px-4 py-2 hover:text-emerald-300 {% if current_page == 'dashboard' %}active{% endif %}">
+                        <i class="fa-solid fa-chart-line text-lg"></i>
+                        <span class="text-xs md:text-sm mt-1">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'foundation_app:contact' %}" class="nav-link flex flex-col items-center px-4 py-2 hover:text-emerald-300 {% if current_page == 'contact' %}active{% endif %}">
+                        <i class="fa-solid fa-envelope text-lg"></i>
+                        <span class="text-xs md:text-sm mt-1">Contact</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'foundation_app:gallery' %}" class="nav-link flex flex-col items-center px-4 py-2 hover:text-emerald-300 {% if current_page == 'gallery' %}active{% endif %}">
+                        <i class="fa-solid fa-images text-lg"></i>
+                        <span class="text-xs md:text-sm mt-1">Gallery</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'foundation_app:media_centre' %}" class="nav-link flex flex-col items-center px-4 py-2 hover:text-emerald-300 {% if current_page == 'media_centre' %}active{% endif %}">
+                        <i class="fa-solid fa-newspaper text-lg"></i>
+                        <span class="text-xs md:text-sm mt-1">Media Centre</span>
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li>
+                    <form method="post" action="{% url 'foundation_app:logout' %}" class="flex flex-col items-center">
+                        {% csrf_token %}
+                        <button type="submit" class="flex flex-col items-center px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-lg">
+                            <i class="fa-solid fa-right-from-bracket text-lg"></i>
+                            <span class="text-xs md:text-sm mt-1">Logout</span>
+                        </button>
+                    </form>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'foundation_app:login' %}" class="flex flex-col items-center px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+                        <i class="fa-solid fa-right-to-bracket text-lg"></i>
+                        <span class="text-xs md:text-sm mt-1">Login</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
 
-    <main>
-        {% block content %}
-        <!-- Content from child templates will be inserted here -->
-        {% endblock %}
+    <!-- Main Content -->
+    <main class="container mx-auto py-8">
+        {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-gray-800 text-white py-8 px-4 md:px-8 mt-12 rounded-t-xl shadow-inner">
-        <div class="container mx-auto text-center">
-            <div class="mb-4">
-                <p class="text-2xl font-bold mb-2">Puranchand Foundation</p>
-                <p class="text-md text-gray-400">Making a difference, one step at a time.</p>
-            </div>
-            <div class="flex justify-center space-x-6 mb-6">
-                <!-- Social Media Icons -->
-               <!-- Facebook -->
-<!-- Facebook -->
-<a href="https://www.facebook.com/puranchandfoundation?_rdr" class="text-gray-400 hover:text-white transition-colors duration-200">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
-    </svg>
-</a>
+    <!-- Footer -->
+   <!-- Footer -->
+<footer class="bg-gray-800 text-white py-8 px-4 md:px-8 mt-12 rounded-t-xl shadow-inner">
+    <div class="container mx-auto text-center">
+        <!-- Foundation name -->
+        <div class="mb-4">
+            <p class="text-2xl font-bold mb-2">Puranchand Foundation</p>
+            <p class="text-md text-gray-400">Making a difference, one step at a time.</p>
+        </div>
 
-<!-- LinkedIn -->
-<a href="https://www.linkedin.com/in/puranchand-foundation-902337261/" class="text-gray-400 hover:text-white transition-colors duration-200">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.563c0-1.353-.264-2.388-1.782-2.388-1.258 0-2.007 1.057-2.007 2.388v5.563h-3.554V9.293h3.554v1.545c.522-.843 1.472-1.895 3.197-1.895 3.424 0 4.043 2.222 4.043 5.48V20.452h-3.554zM7.94 7.641c0-1.071-.856-1.928-1.928-1.928S4.084 6.57 4.084 7.641c0 1.071.856 1.928 1.928 1.928s1.928-.857 1.928-1.928zM4.084 9.293h3.554v11.159H4.084V9.293z"/>
-    </svg>
-</a>
+        <!-- Social Media Icons -->
+        <div class="flex justify-center space-x-6 mb-6">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/puranchandfoundation?_rdr" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-facebook text-xl"></i>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/puranchand-foundation-902337261/" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <!-- X -->
+            <a href="https://x.com/puranfoundation" class="text-gray-400 hover:text-white transition-colors duration-200">
+               <i class="fab fa-twitter text-xl"></i>
 
-<!-- X (replacing Twitter) -->
-<a href="https://x.com/puranfoundation" class="text-gray-400 hover:text-white transition-colors duration-200">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M23.207 2.793a1 1 0 0 0-1.414 0L12 12.586 2.207 2.793a1 1 0 0 0-1.414 1.414L10.586 14l-9.793 9.793a1 1 0 0 0 1.414 1.414L12 15.414l9.793 9.793a1 1 0 0 0 1.414-1.414L13.414 14l9.793-9.793a1 1 0 0 0 0-1.414z"/>
-    </svg>
-</a>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/puranchandfoundation_ngo/" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@puranchandfoundation" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-youtube text-xl"></i>
+            </a>
+        </div>
 
-<!-- Instagram -->
-<a href="https://www.instagram.com/puranchandfoundation_ngo/" class="text-gray-400 hover:text-white transition-colors duration-200">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.92 4.92 0 0 1 1.77 1.033 4.92 4.92 0 0 1 1.033 1.77c.163.46.349 1.26.403 2.43.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.92 4.92 0 0 1-1.033 1.77 4.92 4.92 0 0 1-1.77 1.033c-.46.163-1.26.349-2.43.403-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.92 4.92 0 0 1-1.77-1.033 4.92 4.92 0 0 1-1.033-1.77c-.163-.46-.349-1.26-.403-2.43C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.92 4.92 0 0 1 1.033-1.77 4.92 4.92 0 0 1 1.77-1.033c.46-.163 1.26-.349 2.43-.403C8.416 2.175 8.796 2.163 12 2.163zM12 0C8.741 0 8.332.012 7.052.07 5.77.128 4.81.317 4.013.613a6.918 6.918 0 0 0-2.514 1.636A6.918 6.918 0 0 0 .613 4.013C.317 4.81.128 5.77.07 7.052.012 8.332 0 8.741 0 12s.012 3.668.07 4.948c.058 1.282.247 2.242.543 3.039a6.918 6.918 0 0 0 1.636 2.514 6.918 6.918 0 0 0 2.514 1.636c.797.296 1.757.485 3.039.543 1.28.058 1.689.07 4.948.07s3.668-.012 4.948-.07c1.282-.058 2.242-.247 3.039-.543a6.918 6.918 0 0 0 2.514-1.636 6.918 6.918 0 0 0 1.636-2.514c.296-.797.485-1.757.543-3.039.058-1.28.07-1.689.07-4.948s-.012-3.668-.07-4.948c-.058-1.282-.247-2.242-.543-3.039a6.918 6.918 0 0 0-1.636-2.514 6.918 6.918 0 0 0-2.514-1.636c-.797-.296-1.757-.485-3.039-.543C15.668.012 15.259 0 12 0z"/>
-        <path d="M12 5.838A6.162 6.162 0 1 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/>
-        <circle cx="18.406" cy="5.594" r="1.44"/>
-    </svg>
-</a>
+        <!-- Quick Links -->
+        <div class="flex flex-wrap justify-center space-x-6 mb-6">
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Privacy Policy</a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Terms of Service</a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Sitemap</a>
+        </div>
 
-<!-- YouTube (cleaner logo) -->
-<a href="https://www.youtube.com/@puranchandfoundation" class="text-gray-400 hover:text-white transition-colors duration-200">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M23.498 6.186a2.999 2.999 0 0 0-2.115-2.115C19.27 3.5 12 3.5 12 3.5s-7.27 0-9.383.571a2.999 2.999 0 0 0-2.115 2.115C0.5 8.3 0.5 12 0.5 12s0 3.7.571 5.814a2.999 2.999 0 0 0 2.115 2.115C4.73 20.5 12 20.5 12 20.5s7.27 0 9.383-.571a2.999 2.999 0 0 0 2.115-2.115C23.5 15.7 23.5 12 23.5 12s0-3.7-.002-5.814zM9.75 15.02v-6.04l5.25 3.02-5.25 3.02z"/>
-    </svg>
-</a>
+        <!-- Copyright -->
+        <p class="text-gray-400 text-sm">
+            &copy; {{ current_year }} Puranchand Foundation. All rights reserved.
+        </p>
 
-</div>
-            <div class="flex flex-wrap justify-center space-x-6 mb-6">
-                <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Privacy Policy</a>
-                <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Terms of Service</a>
-                <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Sitemap</a>
-            </div>
-            <p class="text-gray-400 text-sm">
-                &copy; {{ current_year }} Puranchand Foundation. All rights reserved.
-            </p>
-            <p class="text-gray-500 text-xs mt-2">
+        <!-- Developer Credit -->
+        <p class="text-gray-500 text-xs mt-2">
             Developed with ❤️ by
             <a href="https://github.com/vikramaditya005" target="_blank" class="text-emerald-400 hover:text-emerald-300">
                 Aditya Vikram Sahay
             </a>
         </p>
-        </div>
-        
-    </footer>
+    </div>
+</footer>
+
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in footer
-            const currentYearElement = document.querySelector('footer p.text-gray-400.text-sm');
-            if (currentYearElement) {
-                currentYearElement.innerHTML = `&copy; ${new Date().getFullYear()} Puranchand Foundation. All rights reserved.`;
-            }
+        // Toggle mobile menu
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
         });
     </script>
+
 </body>
 </html>
