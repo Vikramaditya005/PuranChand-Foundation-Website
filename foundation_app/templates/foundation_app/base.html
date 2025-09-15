@@ -57,69 +57,70 @@
                 </a>
             </div>
 
-            <!-- Navigation Links -->
-            <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 text-lg">
-                <li>
-                    <a href="{% url 'foundation_app:home' %}"
-                       class="nav-link px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'home' %}active{% endif %}">
-                       <i class="fa-solid fa-house"></i>
-                       <span class="md:inline hidden">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'foundation_app:about_us' %}"
-                       class="nav-link px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'about_us' %}active{% endif %}">
-                       <i class="fa-solid fa-circle-info"></i>
-                       <span class="md:inline hidden">About Us</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'foundation_app:dashboard' %}"
-                       class="nav-link px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'dashboard' %}active{% endif %}">
-                       <i class="fa-solid fa-chart-line"></i>
-                       <span class="md:inline hidden">Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'foundation_app:contact' %}"
-                       class="nav-link px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'contact' %}active{% endif %}">
-                       <i class="fa-solid fa-envelope"></i>
-                       <span class="md:inline hidden">Contact</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'foundation_app:gallery' %}"
-                       class="nav-link px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'gallery' %}active{% endif %}">
-                       <i class="fa-solid fa-images"></i>
-                       <span class="md:inline hidden">Gallery</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'foundation_app:media_centre' %}"
-                       class="nav-link px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'media_centre' %}active{% endif %}">
-                       <i class="fa-solid fa-newspaper"></i>
-                       <span class="md:inline hidden">Media Centre</span>
-                    </a>
-                </li>
-            {% if user.is_authenticated %}
-                <li>
-                    <form method="post" action="{% url 'foundation_app:logout' %}" class="flex items-center">
-                        {% csrf_token %}
-                        <button type="submit"
-                            class="nav-link px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700 shadow-md transform scale-105 transition-all duration-300 ease-in-out">
-                            <i class="fa-solid fa-right-from-bracket"></i> Logout
-                        </button>
-                    </form>
-                </li>
-            {% else %}
-                <li>
-                    <a href="{% url 'foundation_app:login' %}"
-                       class="nav-link px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-md transform scale-105 transition-all duration-300 ease-in-out">
-                       <i class="fa-solid fa-right-to-bracket"></i> Login
-                    </a>
-                </li>
-            {% endif %}
-            </ul>
+           <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 text-lg">
+    <li>
+        <a href="{% url 'foundation_app:home' %}"
+           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'home' %}active{% endif %}">
+           <i class="fa-solid fa-house text-lg"></i>
+           <span class="text-xs md:text-sm mt-1">Home</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'foundation_app:about_us' %}"
+           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'about_us' %}active{% endif %}">
+           <i class="fa-solid fa-circle-info text-lg"></i>
+           <span class="text-xs md:text-sm mt-1">About Us</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'foundation_app:dashboard' %}"
+           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'dashboard' %}active{% endif %}">
+           <i class="fa-solid fa-chart-line text-lg"></i>
+           <span class="text-xs md:text-sm mt-1">Dashboard</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'foundation_app:contact' %}"
+           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'contact' %}active{% endif %}">
+           <i class="fa-solid fa-envelope text-lg"></i>
+           <span class="text-xs md:text-sm mt-1">Contact</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'foundation_app:gallery' %}"
+           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'gallery' %}active{% endif %}">
+           <i class="fa-solid fa-images text-lg"></i>
+           <span class="text-xs md:text-sm mt-1">Gallery</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'foundation_app:media_centre' %}"
+           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg transition-all duration-300 ease-in-out text-white hover:bg-white hover:bg-opacity-20 hover:scale-105 {% if current_page == 'media_centre' %}active{% endif %}">
+           <i class="fa-solid fa-newspaper text-lg"></i>
+           <span class="text-xs md:text-sm mt-1">Media Centre</span>
+        </a>
+    </li>
+    {% if user.is_authenticated %}
+    <li>
+        <form method="post" action="{% url 'foundation_app:logout' %}" class="flex flex-col items-center">
+            {% csrf_token %}
+            <button type="submit"
+                class="nav-link flex flex-col items-center px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700 shadow-md transform scale-105 transition-all duration-300 ease-in-out">
+                <i class="fa-solid fa-right-from-bracket text-lg"></i>
+                <span class="text-xs md:text-sm mt-1">Logout</span>
+            </button>
+        </form>
+    </li>
+{% else %}
+    <li>
+        <a href="{% url 'foundation_app:login' %}"
+           class="nav-link flex flex-col items-center px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-md transform scale-105 transition-all duration-300 ease-in-out">
+           <i class="fa-solid fa-right-to-bracket text-lg"></i>
+           <span class="text-xs md:text-sm mt-1">Login</span>
+        </a>
+    </li>
+{% endif %}
+</ul>
         </div>
     </nav>
 
