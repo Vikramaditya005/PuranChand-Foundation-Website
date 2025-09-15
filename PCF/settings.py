@@ -129,8 +129,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Razorpay credentials
-RAZORPAY_KEY_ID = "rzp_test_RCeQhXtvZuW3nm"
-RAZORPAY_KEY_SECRET = "8WhtWulOvpImkKNmRM0829Ym"
+RAZORPAY_KEY_ID = "rzp_live_RHnSL3uXGp6LQi"
+RAZORPAY_KEY_SECRET = "L57ESuS8DQT4Xb0xXaHHioP2"
 # Redirects for login/logout
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'   # after successful login
