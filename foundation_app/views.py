@@ -235,7 +235,7 @@ def dashboard(request):
             "projects_supported": ["Project A", "Project B"],
             "volunteer_hours": "10 hours",
         },
-        "key_id": "rzp_test_RCeQhXtvZuW3nm",   # Razorpay Checkout key
+        "key_id": "rzp_live_RHnSL3uXGp6LQi",  
     }
 
     return render(request, "foundation_app/dashboard.html", context)
